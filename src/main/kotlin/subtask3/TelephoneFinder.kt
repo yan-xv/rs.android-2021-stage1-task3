@@ -2,8 +2,29 @@ package subtask3
 
 class TelephoneFinder {
 
-    // TODO: Complete the following function
     fun findAllNumbersFromGivenNumber(number: String): Array<String>? {
-        throw NotImplementedError("Not implemented")
+        var  arr = mutableListOf<String>()
+        number.forEach { c ->
+            val near = getNear(c) ?: return null
+            near.forEach { arr?.add(number.replace(c, it)) }
+        }
+        return arr.toTypedArray()
+    }
+
+    private fun getNear(number: Char): String? {
+       return when(number) {
+            '0' -> "8"
+            '1' -> "24"
+            '2' -> "135"
+            '3' -> "26"
+            '4' -> "157"
+            '5' -> "2468"
+            '6' -> "359"
+            '7' -> "48"
+            '8' -> "5790"
+            '9' -> "68"
+            else -> null
+        }
     }
 }
+
